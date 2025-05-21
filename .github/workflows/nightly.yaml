@@ -11,3 +11,15 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+  env_test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Environment variable test
+      env:
+        DUMMY1: ${{ secrets.DUMMY1 }}
+        DUMMY2: ${{ secrets.DUMMY2 }}
+      run: python scripts/env_test.py
