@@ -11,6 +11,13 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+    - name: Upload sample data
+      env:
+        SIP4D_UPLOAD_USER: ${{ secrets.SIP4D_UPLOAD_USER }}
+        SIP4D_UPLOAD_PASSWD: ${{ secrets.SIP4D_UPLOAD_PASSWD }}
+        SIP4D_UPLOAD_URL: ${{ secrets.SIP4D_UPLOAD_URL }}
+      run: python scripts/sip4d_https_upload.py
+
   env_test:
     runs-on: ubuntu-latest
     strategy:
