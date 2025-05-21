@@ -42,3 +42,25 @@ def getUserdataFromEnv():
 
 getUserdataFromEnv()
 getUserdataFromFile(Path(__file__).resolve().parent.parent / "userdata.json")
+
+# upload_file = args.file
+upload_file = (
+    Path(__file__).resolve().parent.parent
+    / "sample_data/082_99-999-99_20250317120000_1.zip"
+)
+
+with requests.Session() as s:
+
+    with open(upload_file, "rb") as f:
+
+        r = s.post(
+            path,
+            auth=(user, passwd),
+            files={"zip_file": f},
+            headers={"Connection": "close"},
+        )
+
+        if r.status_code != 200:
+            print("cannot estabolish the connection, {}".format(r.status_code))
+
+        print("sccueed to upload")
