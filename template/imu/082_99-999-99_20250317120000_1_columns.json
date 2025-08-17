@@ -1,0 +1,15 @@
+{
+  "num_column": 1,
+  "code": "99-999-99",
+  "version": "1",
+  "columns": [
+    {
+      "name": "roomba",
+      "jname": "ルンバ",
+      "connid": "IMU",
+      "show": true,
+      "description": "ルンバのIMUデータ",
+      "type": "Double"
+    }
+  ]
+}

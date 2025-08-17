@@ -1,0 +1,36 @@
+{
+  "version" : "1",
+  "title" : "ルンバの加速度センサ値",
+  "updated" : "2024-06-20T00:00:00",
+  "information_date" : "2024-06-20T00:00:00",
+  "code" : "99-999-99",
+  "category" : "その他",
+  "format" : "SIP4D-ZIP",
+  "author" : {
+    "name" : "東京大学 情報システム工学研究室",
+    "e-mail" : "k-okada@jsk.imi.i.u-tokyo.ac.jp"
+  },
+  "maintainer" : {
+    "name" : "東京大学 情報システム工学研究室",
+    "e-mail" : "k-okada@jsk.imi.i.u-tokyo.ac.jp"
+  },
+  "disaster" : {
+    "name" : "地震"
+  },
+  "openflg" : "一般公開可能",
+  "ttid" : "ad59cba9-19f9-090e-1fe8-3894542b747b",
+  "lgcode" : null,
+  "license_id" : "cc-zero",
+  "tags" : [ "振動" ],
+  "testflg" : "試験",
+  "crs" : "4326",
+  "character" : "UTF-8",
+  "note" : "テスト",
+  "entry_num" : 1,
+  "entry" : [ {
+    "type" : "GeoJSON",
+    "title" : "振動情報",
+    "file" : "082_99-999-99_20250317120000_1.geojson",
+    "updated" : "2024-06-20T00:00:00"
+  } ]
+}
