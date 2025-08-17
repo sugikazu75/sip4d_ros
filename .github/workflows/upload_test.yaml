@@ -16,7 +16,7 @@ jobs:
         SIP4D_UPLOAD_USER: ${{ secrets.SIP4D_UPLOAD_USER }}
         SIP4D_UPLOAD_PASSWD: ${{ secrets.SIP4D_UPLOAD_PASSWD }}
         SIP4D_UPLOAD_URL: ${{ secrets.SIP4D_UPLOAD_URL }}
-      run: python scripts/sip4d_https_upload.py
+      run: python scripts/sip4d_https_upload.py -f sample_data/082_99-999-99_20250317120000_1.zip
 
   env_test:
     runs-on: ubuntu-latest
