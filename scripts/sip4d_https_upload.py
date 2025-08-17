@@ -8,9 +8,6 @@ import requests
 
 
 def getUserdataFromFile(filename):
-    global user
-    global passwd
-    global path
     try:
         with open(filename, "r") as f:
             userdata = json.load(f)
@@ -20,23 +17,33 @@ def getUserdataFromFile(filename):
             return user, passwd, path
     except (FileNotFoundError, json.JSONDecodeError) as e:
         print(f"Failed to load {e}")
+        return None, None, None
 
 
 def getUserdataFromEnv():
-    global user
-    global passwd
-    global path
-    user = os.environ.get("SIP4D_UPLOAD_USER")
-    passwd = os.environ.get("SIP4D_UPLOAD_PASSWD")
-    path = os.environ.get("SIP4D_UPLOAD_URL")
+    user = os.environ.get("SIP4D_UPLOAD_USER", None)
+    passwd = os.environ.get("SIP4D_UPLOAD_PASSWD", None)
+    path = os.environ.get("SIP4D_UPLOAD_URL", None)
     return user, passwd, path
 
 
 def upload_zip_to_sip4d(filename):
-    user, passwd, path = getUserdataFromEnv()
-    user, passwd, path = getUserdataFromFile(
+    user, passwd, path = "", "", ""
+    user_env, passwd_env, path_env = getUserdataFromEnv()
+    user_file, passwd_file, path_file = getUserdataFromFile(
         Path(__file__).resolve().parent.parent / "userdata.json"
     )
+    if (user_env is None) and (user_file is None):
+        print("No user data found. Please set environment variables or provide a file.")
+        return
+    elif user_env is not None:
+        user = user_env
+        passwd = passwd_env
+        path = path_env
+    elif user_file is not None:
+        user = user_file
+        passwd = passwd_file
+        path = path_file
 
     with requests.Session() as s:
         with open(filename, "rb") as f:
