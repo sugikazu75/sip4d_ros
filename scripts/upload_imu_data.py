@@ -23,7 +23,9 @@ if __name__ == "__main__":
     collector = SlidingWindowBuffer(robot_ns=args.robot_ns)
 
     duration = 60
-    last_upload_time = rospy.Time.now().to_sec()
+    last_upload_time = rospy.Time.now().to_sec() - (
+        60 * (duration - 1)
+    )  # start uploading after 60 seconds
     rate = rospy.Rate(100)  # 100 Hz
     while not rospy.is_shutdown():
         rate.sleep()
